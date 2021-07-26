@@ -1,0 +1,31 @@
+body{
+    text-align: center;
+    background-color: #212121;
+    color: white;
+    font-family: 'Arvo', serif;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+h1 {
+    font-family: 'Press Start 2P', cursive;
+}
+
+.down-btn {
+    margin-top: 20px;
+    margin-right: 50px;
+    margin-left: 50px;
+    border-radius: 28px;
+    font-family: 'Arvo', serif;
+    color: #ffffff;
+    font-size: 20px;
+    background: #0D7377;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+  }
+  
+.down-btn:hover {
+background: #14FFEC;
+}

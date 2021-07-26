@@ -1,0 +1,60 @@
+body{
+    background-color: #212121;
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Arvo', serif;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.btn {
+    font-size: 3.5rem;
+    height: 10.5rem;
+    width: 10.5rem;
+    background-color: white;
+    font-family: 'Otomanopee One', sans-serif;
+}
+
+.down-btn {
+    margin-top: 20px;
+    margin-right: 50px;
+    margin-left: 50px;
+    border-radius: 28px;
+    font-family: 'Arvo', serif;
+    color: #ffffff;
+    font-size: 20px;
+    background: #0D7377;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+  }
+  
+.down-btn:hover {
+background: #14FFEC;
+}
+
+.pressed {
+    box-shadow: 0 0 20px white;
+    background-color: grey;
+}
+
+.header {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+}
+
+@media (min-width: 360px) and (max-width: 768px){
+    .btn {
+        height: 7.5rem;
+        width: 7.5rem;
+    } 
+}
+
+@media (max-width: 360px){
+    .btn {
+        height: 6.5rem;
+        width: 6.5rem;
+    } 
+}
