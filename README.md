@@ -1,5 +1,4 @@
 # minmax
-# TicTacToe-minmax
 [Check it out :D](https://gokulsudheesh.github.io/minmax/)
 
 ### Resources:
