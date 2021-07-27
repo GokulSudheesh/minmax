@@ -344,7 +344,7 @@ function minimax(board, maximizingPlayer, depth, alpha, beta){
 }
 
 function get_bestMove(board){
-    if (turn == 0){
+    if (board[5][3] == "*"){
         return [5, 3]; //If Ai starts first, put in the middle
     }
 
