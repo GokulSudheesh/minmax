@@ -39,7 +39,7 @@ function press_button(id){
             }        
             turn++;
             display_board_debug();
-            $("#header").text("Connect Four");
+            //$("#header").text("Connect Four");
             checkGameOver(mainBoard);
             player_turn = true;            
         }, eta);
@@ -266,12 +266,14 @@ function checkWinner(board, draw){
 function checkGameOver(board){
     let lookUp = {"-1" : player1, "1" : player2};
     let lookUp2 = {"-1" : "You won! Wow!", "1" : "C'mon, you got this!"};
+    let sound = {"-1" : "./sounds/win.wav", "1" : "./sounds/game-over.wav"};;
     let winner = checkWinner(board, true);
     if(winner == 0){
         console.log("Tie!");
         $("#header").text("Tie!");
     }
     else if(winner != null){
+        play_Audio(sound[winner]);
         console.log(lookUp[winner]+" won!");
         $("#header").text(lookUp2[winner]);
         // Disable other buttons
@@ -377,6 +379,7 @@ function AI_move(){
         let pos = (move[0]*COLUMNS + move[1]);
         console.log(move.toString()+" "+ pos);
         press_button(pos);
+        $("#header").text("Connect Four");
         //player_turn = true;
     }, 700);      
 }
