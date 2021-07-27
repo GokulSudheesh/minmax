@@ -12,6 +12,7 @@ for (let col = 0; col < COLUMNS; col++){
     mainBoard[ROWS-1][col] = "*"; //Gravity (spots were the coins can be placed)
 }  
 let turn = 0;
+let message = "Connect Four"; //To fix the god damn bug -> (Not displaying "You Won!" stupid shit)
 
 function press_button(id){
     $("#AI-btn").prop("disabled", true);
@@ -275,7 +276,8 @@ function checkGameOver(board){
     else if(winner != null){
         play_Audio(sound[winner]);
         console.log(lookUp[winner]+" won!");
-        $("#header").text(lookUp2[winner]);
+        message = lookUp2[winner];
+        $("#header").text(message);
         // Disable other buttons
         available.forEach(function(item, index, array){
             array[index] = false;
@@ -379,7 +381,7 @@ function AI_move(){
         let pos = (move[0]*COLUMNS + move[1]);
         console.log(move.toString()+" "+ pos);
         press_button(pos);
-        $("#header").text("Connect Four");
+        $("#header").text(message);
         //player_turn = true;
     }, 700);      
 }
