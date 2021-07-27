@@ -18,6 +18,7 @@ function press_button(id){
     console.log(id);
     let column_id = id % COLUMNS;
     if(available[column_id]){
+        //$("#header").text("Wait for your turn.");
         player_turn = false;
         let eta = 75 * (available_column(mainBoard, column_id)+1); // Lets say it takes .75 milli second for a ball to pass through a hole
         play_Audio("./sounds/coins.wav");
@@ -38,8 +39,9 @@ function press_button(id){
             }        
             turn++;
             display_board_debug();
+            $("#header").text("Connect Four");
             checkGameOver(mainBoard);
-            player_turn = true;
+            player_turn = true;            
         }, eta);
         return true;
     }
@@ -95,9 +97,15 @@ function available_moves(board){
 
 function check_equal(a, b, c, d) {
     return a == b && b == c && c == d;
-  }
+}
 
-function checkWinner(board){
+function draw_winner(ids){
+    ids.forEach(function(item, index, array){
+        $("#"+array[index]).addClass("won");
+    });
+}
+
+function checkWinner(board, draw){
     // returns -1 if player1 wins
     // returns +1 if player 2 wins
     // returns 0 if its a tie *Mama-mia thats a lot of loopsa*
@@ -107,9 +115,15 @@ function checkWinner(board){
         for(let col = 0; col < 4; col++){
             if (check_equal(board[row][col], board[row][col+1], board[row][col+2], board[row][col+3])){
                 if(board[row][col] == player1){
+                    if (draw){
+                        draw_winner([((row)*COLUMNS +(col)), ((row)*COLUMNS +(col+1)), ((row)*COLUMNS +(col+2)), ((row)*COLUMNS +(col+3))]);
+                    }
                     return -1;
                 }
                 if(board[row][col] == player2){
+                    if (draw){
+                        draw_winner([((row)*COLUMNS +(col)), ((row)*COLUMNS +(col+1)), ((row)*COLUMNS +(col+2)), ((row)*COLUMNS +(col+3))]);
+                    }
                     return 1;
                 }
             }
@@ -120,9 +134,15 @@ function checkWinner(board){
         for(let row = 0; row < 3; row++){
             if (check_equal(board[row][col], board[row+1][col], board[row+2][col], board[row+3][col])){
                 if(board[row][col] == player1){
+                    if (draw){
+                        draw_winner([((row)*COLUMNS +(col)), ((row+1)*COLUMNS +(col)), ((row+2)*COLUMNS +(col)), ((row+3)*COLUMNS +(col))]);
+                    }
                     return -1;
                 }
                 if(board[row][col] == player2){
+                    if (draw){
+                        draw_winner([((row)*COLUMNS +(col)), ((row+1)*COLUMNS +(col)), ((row+2)*COLUMNS +(col)), ((row+3)*COLUMNS +(col))]);
+                    }
                     return 1;
                 }
             }
@@ -137,9 +157,15 @@ function checkWinner(board){
             for(let row = 0; row < diags; row++){ 
                 if (check_equal(board[row][col], board[row+1][col-1], board[row+2][col-2], board[row+3][col-3])){
                     if(board[row][col] == player1){
+                        if (draw){
+                            draw_winner([((row)*COLUMNS +(col)), ((row+1)*COLUMNS +(col-1)), ((row+2)*COLUMNS +(col-2)), ((row+3)*COLUMNS +(col-3))]);
+                        }
                         return -1;
                     }
                     if(board[row][col] == player2){
+                        if (draw){
+                            draw_winner([((row)*COLUMNS +(col)), ((row+1)*COLUMNS +(col-1)), ((row+2)*COLUMNS +(col-2)), ((row+3)*COLUMNS +(col-3))]);
+                        }
                         return 1;
                     }
                 }
@@ -155,9 +181,15 @@ function checkWinner(board){
             for(let col = 6; col >= 0; col--){ 
                 if (check_equal(board[row][col], board[row+1][col-1], board[row+2][col-2], board[row+3][col-3])){
                     if(board[row][col] == player1){
+                        if (draw){
+                            draw_winner([((row)*COLUMNS +(col)), ((row+1)*COLUMNS +(col-1)), ((row+2)*COLUMNS +(col-2)), ((row+3)*COLUMNS +(col-3))]);
+                        }
                         return -1;
                     }
                     if(board[row][col] == player2){
+                        if (draw){
+                            draw_winner([((row)*COLUMNS +(col)), ((row+1)*COLUMNS +(col-1)), ((row+2)*COLUMNS +(col-2)), ((row+3)*COLUMNS +(col-3))]);
+                        }
                         return 1;
                     }
                 }
@@ -178,9 +210,15 @@ function checkWinner(board){
             for(let row = 0; row < diags; row++){
                 if (check_equal(board[row][col], board[row+1][col+1], board[row+2][col+2], board[row+3][col+3])){
                     if(board[row][col] == player1){
+                        if (draw){
+                            draw_winner([((row)*COLUMNS +(col)), ((row+1)*COLUMNS +(col+1)), ((row+2)*COLUMNS +(col+2)), ((row+3)*COLUMNS +(col+3))]);
+                        }
                         return -1;
                     }
                     if(board[row][col] == player2){
+                        if (draw){
+                            draw_winner([((row)*COLUMNS +(col)), ((row+1)*COLUMNS +(col+1)), ((row+2)*COLUMNS +(col+2)), ((row+3)*COLUMNS +(col+3))]);
+                        }
                         return 1;
                     }
                 } 
@@ -196,9 +234,15 @@ function checkWinner(board){
             for(let col = 0; col < diags; col++){
                 if (check_equal(board[row][col], board[row+1][col+1], board[row+2][col+2], board[row+3][col+3])){
                     if(board[row][col] == player1){
+                        if (draw){
+                            draw_winner([((row)*COLUMNS +(col)), ((row+1)*COLUMNS +(col+1)), ((row+2)*COLUMNS +(col+2)), ((row+3)*COLUMNS +(col+3))]);
+                        }
                         return -1;
                     }
                     if(board[row][col] == player2){
+                        if (draw){
+                            draw_winner([((row)*COLUMNS +(col)), ((row+1)*COLUMNS +(col+1)), ((row+2)*COLUMNS +(col+2)), ((row+3)*COLUMNS +(col+3))]);
+                        }
                         return 1;
                     }
                 }  
@@ -222,7 +266,7 @@ function checkWinner(board){
 function checkGameOver(board){
     let lookUp = {"-1" : player1, "1" : player2};
     let lookUp2 = {"-1" : "You won! Wow!", "1" : "C'mon, you got this!"};
-    let winner = checkWinner(board);
+    let winner = checkWinner(board, true);
     if(winner == 0){
         console.log("Tie!");
         $("#header").text("Tie!");
@@ -241,7 +285,7 @@ function minimax(board, maximizingPlayer, depth, alpha, beta){
     if(depth == 9){
         return 0;
     }
-    let eval = checkWinner(board);
+    let eval = checkWinner(board, false);
     if (eval != null){
         return eval;
     }
@@ -296,6 +340,10 @@ function minimax(board, maximizingPlayer, depth, alpha, beta){
 }
 
 function get_bestMove(board){
+    if (turn == 0){
+        return [5, 3]; //If Ai starts first, put in the middle
+    }
+
     let optimalPosition = [null, null];
     let optimalScore = -Infinity;
 
@@ -330,7 +378,6 @@ function AI_move(){
         console.log(move.toString()+" "+ pos);
         press_button(pos);
         //player_turn = true;
-        $("#header").text("Connect Four");
     }, 700);      
 }
 
